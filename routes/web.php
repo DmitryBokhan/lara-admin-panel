@@ -20,3 +20,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//маршруты для админа
+Route::group(['middleware' => ['role:admin']], function () {
+    //
+});
+
+
+//маршруты пользователя 
+Route::group(['middleware' => ['role:user']], function () {
+    //
+});
