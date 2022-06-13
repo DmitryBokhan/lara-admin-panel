@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //маршруты для админа
-Route::group(['middleware' => ['role:admin']], function () {
-    //
+Route::middleware(['role:admin'])->prefix('admin_panel')->group( function () {
+    Route::get('/', [HomeController::class, 'index']);
 });
 
 
 //маршруты пользователя 
 Route::group(['middleware' => ['role:user']], function () {
-    //
+   
 });
