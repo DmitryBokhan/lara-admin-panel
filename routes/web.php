@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //маршруты для админа
 Route::middleware(['role:admin'])->prefix('admin_panel')->group( function () {
     Route::get('/', [HomeController::class, 'index'])->name('homeAdmin');
+    Route::resource('category', CategoryController::class);
 });
 
 
