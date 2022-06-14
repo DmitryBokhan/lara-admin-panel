@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Добавить статью')
+@section('title', 'Редактировать статью')
 
 @section('content')
 
@@ -9,7 +9,7 @@
    <div class="container-fluid">
      <div class="row mb-2">
        <div class="col-sm-6">
-         <h1 class="m-0">Добавить статью</h1>
+         <h1 class="m-0">Редактировать статью: {{ $post->title }}</h1>
        </div><!-- /.col -->
        <div class="col-sm-6">
          <ol class="breadcrumb float-sm-right">
@@ -34,35 +34,36 @@
      <div class="row">
       <div class="col-lg-12">
          <div class="card card-primary">
-            <form action="{{ route('post.store') }}" method="POST">
+            <form action="{{ route('post.update', $post->id) }}" method="POST">
                @csrf
+               @method('PUT')
               <div class="card-body">
                 <div class="form-group">
                   <label for="categoryInput">Название</label>
-                  <input type="text" name="title" class="form-control" id="categoryInput" placeholder="Введите название статьи" required>
+                  <input type="text" name="title" value="{{ $post->title }}" class="form-control" id="categoryInput" placeholder="Введите название статьи" required>
                 </div>
                 <div class="form-group">
                   <label>Выберите категорию</label>
                   <select class="form-control" name="cat_id" required>
                      @foreach ($categories as $category)
-                     <option value="{{ $category->id }}">{{ $category->title }}</option>
+                     <option value="{{ $category->id }}" @if($category->id == $post->cat_id) selected @endif>{{ $category->title }}</option>
                      @endforeach
                   </select>
                 </div>
                 <div class="form-group">
-                  <textarea name="text" class="editor"></textarea>
+                  <textarea name="text" class="editor">{{ $post->text }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="feature_image">Изображение статьи</label>
-                  <img src="" alt="" class="img-uploaded mb-1" style="display: block; width:150px" >
-                  <input type="text" class="form-control" id="feature_image" name="img" value="" readonly>
+                  <img src="{{ $post->img }}" alt="" class="img-uploaded mb-1" style="display: block; width:150px" >
+                  <input type="text" value="{{ $post->img }}" class="form-control" id="feature_image" name="img" value="" readonly>
                   <a href="" class="popup_selector" data-inputid="feature_image">Выбрать изображение</a>
               </div>
                </div>
               
               <!-- /.card-body -->
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
               </div>
             </form>
           </div>
