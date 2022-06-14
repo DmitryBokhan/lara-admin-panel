@@ -23,8 +23,9 @@
   <link rel="stylesheet" href="/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="/admin/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
+  <!-- стили попапа -->
+  <link href="/admin/dist//css/colorbox.css" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -84,7 +85,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('post.create') }}" class="nav-link">
                   <p>Добавить статью</p>
                 </a>
               </li>
@@ -155,8 +156,6 @@
 <script src="/admin/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script src="/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
@@ -165,6 +164,11 @@
 <script src="/admin/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="/admin/dist/js/pages/dashboard.js"></script>
+<!-- Текстовый редактор tiny -->
+<script src="https://cdn.tiny.cloud/1/vagbl67a5l2swut00ra43jea8kqv18ez0a2wm5lkqow3vozg/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<!-- Попап -->
+<script type="text/javascript" src="/admin/dist/js/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
 <!-- Скрипты-->
 <script src="/admin/admin.js"></script>
 </body>
